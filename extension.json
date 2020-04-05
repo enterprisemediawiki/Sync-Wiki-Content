@@ -1,0 +1,11 @@
+{
+	"name": "Sync Wiki Content",
+	"version": "0.1.6",
+	"author": [
+		"[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]"
+	],
+	"url": "https://github.com/enterprisemediawiki/Sync-Wiki-Content",
+	"description": "A script to synchronize common content to multiple wikis",
+	"type": "other",
+	"manifest_version": 1
+}

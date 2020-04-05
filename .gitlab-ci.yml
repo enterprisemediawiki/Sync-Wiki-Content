@@ -1,0 +1,34 @@
+stages:
+- test
+
+before_script:
+  - whoami
+  - pwd
+  - cat /etc/os-release
+
+# Check syntax of PHP files
+parallel-lint:
+  stage: test
+  image: gitlabregistry.fit.nasa.gov/nasawiki/meza-test-docker:latest
+  script:
+    - composer install  --no-interaction --no-progress
+    - composer test-parallel-lint
+
+# Code conventions using PHP Code Sniffer
+# Relies upon file .phpcs.xml in root of this repository
+# Uncomment this and add .phpcs.xml if Syncbot maintainers want code convention enforcement
+# phpcs:
+#   stage: test
+#   image: gitlabregistry.fit.nasa.gov/nasawiki/meza-test-docker:latest
+#   script:
+#     - composer install  --no-interaction --no-progress
+#     - composer test-phpcs
+
+# Ensure execute bit not set on files (with exceptions) per WMF standards
+# Ref: https://www.mediawiki.org/wiki/MinusX
+minus-x:
+  stage: test
+  image: gitlabregistry.fit.nasa.gov/nasawiki/meza-test-docker:latest
+  script:
+    - composer install  --no-interaction --no-progress
+    - composer test-minus-x
