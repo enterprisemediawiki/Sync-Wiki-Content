@@ -144,7 +144,7 @@ function updateWiki( $wikiID, $pageName, $pageContentFile, $MWMaintPath, $conten
 	$editLink		= $MWMaintPath . "edit.php";
 
 	// write revision to wiki page
-	$output = shell_exec("WIKI=$wikiID php $editLink \"$pageName\" -b -u Syncbot < " . $contentConfig . "/source/$pageContentFile");
+	$output = shell_exec("WIKI=$wikiID php $editLink " . escapeshellarg($pageName) . " -b -u Syncbot < " . $contentConfig . "/source/" . escapeshellarg($pageContentFile));
 
 	echo "$wikiID: $pageName\n";
 
